@@ -1,0 +1,217 @@
+#author: jugpreet singh talwar (jtalwar@usc.edu)
+GENERAL INFORMATION:
+
+NAIVE BAYES classifer was trained and tested for data without index 
+increment for features, which means the index for the features starts 
+at 0. Please consider this fact while running the code and while comparing 
+the output file with the reference file.
+
+SVM and MEGAM were trained and tested for data with index increment for 
+features, which means the index for the features starts at 1. Please consider 
+this fact while running the code and while comparing the output file with the 
+reference file.
+
+F1, PRECISION and RECALL values for the three models:
+
+NAIVE BAYES
+
+SENTIMENT:
+
+Training 75 Test 25
+F1 Positive: 0.8838126540673787
+Precision Positive: 0.9208904109589041
+Recall Positive: 0.849605055292259
+F1 Negative: 0.8897895557287606
+Precision Negative: 0.857057057057057
+Recall Negative: 0.9251215559157212
+
+Training 25 Test 75
+F1 Positive: 0.8281718847307931
+Precision Positive: 0.8860084797092671
+Recall Positive: 0.7774234693877551
+F1 Negative: 0.8470030750617533
+Precision Negative: 0.8004764173415913
+Recall Negative: 0.8992721044744166
+
+SPAM:
+
+Training 75 Test 25
+F1 Ham: 0.9860036832412522
+Precision Ham: 0.992216456634544
+Recall Ham: 0.9798682284040996
+F1 Spam: 0.9866008462623415
+Precision Spam: 0.9807220469681037
+Recall Spam: 0.992550549840369
+
+Training 25 Test 75
+F1 Ham: 0.9817757869546542
+Precision Ham: 0.9913258983890955
+Recall Ham: 0.9724079251245897
+F1 Spam: 0.982538656005644
+Precision Spam: 0.9735523709658628
+Recall Spam: 0.9916923807263233
+
+
+SVM
+
+SPAM:
+
+Training 75 Test 25
+F1 Ham: 0.9579707461581188
+Precision Ham: 0.9938532462543219
+Recall Ham: 0.9245889921372409
+F1 Spam: 0.9601824241361165
+Precision Spam: 0.9284260515603799
+Recall Spam: 0.9941881583726844
+
+Training 25 Test 75
+F1 Ham: 0.9470688673875924
+Precision Ham: 0.9878627968337731
+Recall Ham: 0.9095105064982388
+F1 Spam: 0.9521522894872234
+Precision Spam: 0.9178882398324699
+Recall Spam: 0.9890736342042755
+
+SENTIMENT:
+
+Training 75 Test 25
+F1 POSITIVE: 0.868603916614024
+Precision POSITIVE: 0.8609893550407013
+Recall POSITIVE: 0.8763543658381134
+F1 NEGATIVE: 0.8651102464332036
+Precision NEGATIVE: 0.8730366492146597
+Recall NEGATIVE: 0.8573264781491002
+
+Training 25 Test 75
+F1 POSITIVE: 0.8459513530588607
+Precision POSITIVE: 0.8376603065373788
+Recall POSITIVE: 0.8544081676060832
+F1 NEGATIVE: 0.8418891170431212
+Precision NEGATIVE: 0.8505295337918987
+Recall NEGATIVE: 0.8334224884989836
+
+MegaM
+
+SPAM:
+
+Training 75 Test 25
+F1 HAM: 0.9758381719423113
+Precision HAM: 0.9878649981039059
+Recall HAM: 0.964100666173205
+F1 SPAM: 0.9776158250910983
+Precision SPAM: 0.9667124227865477
+Recall SPAM: 0.9887679887679888
+
+Training 25 Test 75
+F1 HAM: 0.9779826529993327
+Precision HAM: 0.9889597644749755
+Recall HAM: 0.967246550689862
+F1 SPAM: 0.9784172661870504
+Precision SPAM: 0.9678861310434067
+Recall SPAM: 0.9891800913681174
+
+SENTIMENT:
+
+Training 75 Test 25
+F1 POSITIVE: 0.8433650123196057
+Precision POSITIVE: 0.9194167306216423
+Recall POSITIVE: 0.7789336801040312
+F1 NEGATIVE: 0.8694631856849516
+Precision NEGATIVE: 0.8133918770581778
+Recall NEGATIVE: 0.9338374291115312
+
+Training 25 Test 75
+F1 POSITIVE: 0.8472882269364558
+Precision POSITIVE: 0.7873793480240393
+Recall POSITIVE: 0.9170643758617033
+F1 NEGATIVE: 0.817601966177073
+Precision NEGATIVE: 0.899330587023687
+Recall NEGATIVE: 0.7494903980259628
+
+SUPPORTING CODE:
+
+1. formatEmailData.py
+#contruct the labeled data for Spam analysis.
+#it uses the enron.vocab and emails present in folders
+#enron(1,2,4,5)
+
+2. prepareFilesForMegaM.py
+#prepare Sentiment and Spam test and training data for MegaM
+
+3. prepareFilesForSvm.py
+#prepare Sentiment and Spam test and training data for Svm
+
+4. prepareTestFiles.py
+#prepare the 75/25 split of the labeled data and construct
+#train, test and the actual class(ouput) files.
+
+5. buildEmailTestDataFile.py
+#prepare the final test data for Spam analysis based on
+#email in the spam_or_ham_test folder
+
+6. transformReviewsFile.py
+#convert the Sentiments rating to POSITIVE/NEGATIVE
+
+7. CompareOutputWithActual.py
+#compare the predicted class with actual class, used for both
+#svm and megam with minor changes during the runs.
+
+8. convertSvmOutputTpProperFormat_Email.py
+#convert the output of svm to proper format for comparison
+
+9.processMegamOutput.py
+#convert the output of megam to proper format for comparison
+
+ANSWERS TO QUESTIONS FROM THE ASSIGNMENT PAGE:
+1)75 training 25 test data
+
+Precision, Recall and F1 scores reported above
+
+Best technique for each case.
+Spam analysis: Although pretty close, in terms of F1 scores, NB performed 
+the best out of the three.
+Sentiment analysis: Again the F1 scores were pretty close but NB had the higher
+score of the three.
+
+Performance of Spam vs Sentiment analysis
+In terms of F1 score, across models, a higher F1 was seen for Spam detection
+
+2) 25 training 75 test data
+
+Precision, Recall and F1 scores reported above
+
+Performance drop within models due to reduced size of training data and differences seen
+during spam and sentiment analysis and model robustness.
+
+Performances compared over a 100 unit scale in terms of F1 scores(multiplying the actual F1 scores by 100)
+NB: the performances decreased compared to when there was more training data for both 
+spam and sentiment. the drop was more visible in sentiment analysis where it was around 
+a 4 unit drop. spam analysis did not have a big difference.
+
+SVM: the performances decreased compared to when there was more training data for both 
+spam and sentiment, however, there wasn't a big drop for either spam or sentiment. it was
+almost the same(1 unit drop) for spam analysis and a 2 unit drop for sentiment analysis.
+
+MEGAM: the performances were similar for spam and sentiment analysis comapred to when
+there was more trainging data.
+
+All three models performed rather well for Spam detection, i.e their performances were
+comparable to when there was more training data. However, for sentiment analysis, although
+the difference wasn't much but SVM(2 unit decrease) and MEGAM(almost similar) performed 
+similar in less training data conditions comapared to NB that had a 4 point decrease. 
+Although, NB perfomed well overall(when there was enough data), but if robustness is 
+decided based on how a model performs when it has less data, then MegaM would come out 
+to be the most robust.
+
+https://piazza.com/class/idt3o8icmtk71g?cid=134  #this is the note I wrote on piazza and what is written below is a sligh extension of the post.
+
+For me the perforamance has almost been the same with at most a 1 or 2 unit difference across models. But the F1 scores between runs might 
+not always be consistent, as it would depend highly on the set of data the model was trained on(selected randomly).
+A bad training set for 75/25 might lead to a slightly lower score than what it could do and a comparatively good training set 
+for 25/75 would lead to a good F1. Therefore, a number of runs would be required (and then probably an avarage of those scores to get the 
+actual/consistent value of F1, so as to minimize the effect of bad data selection) to make any decision that would tell whether the difference 
+is genuine or if it was pure bad selection of training data. 
+Also, it might be the case the a model was built so that it could train on very less data and still produce decent results which it looks like 
+that MegaM and SVM are better equipped to do, although NB implementation wasn't too poor either. It generally makes sense to believe the 75/25 model would 
+normally yield better scores but because of the reasons above, it can't be guaranteed that this would be the case every time.
+To be really sure if the difference are genuine multiple runs would be required so that consistent result are achieved.
